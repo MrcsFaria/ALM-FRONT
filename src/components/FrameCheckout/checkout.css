@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+*{
+    font-family: 'Inter', sans-serif;
+}
+
+.body{
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30%;
+}
+
+.botao{
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.area-finalizar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+}
+
+.selo-seg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 30%;
+}
+
+.form-group{
+    padding-top: 20px;
+    font-size: 16px;
+}
+
+.area-finalizar a{
+    font-size: 23px;
+    font-weight: 300;
+}
+
+.selo-seg img{
+    width: 50px;
+    height: 45px;
+}
+
+.selo-seg a{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.quadrado-cinza{
+    background-color: rgb(217, 217, 217);
+    width: 350px;
+    height: 500px;
+    border-radius: 30px;
+    align-items: center;
+    justify-items: center;
+}
+
+.sub{
+    padding-top: 20px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:17%;
+    height: 33%;
+}
+
+.frete{
+    padding-top: 20px;
+    border-top: 3px solid black;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:25%;
+    height: 33%;
+}
+
+.tot{
+    padding-top: 20px;
+    border-top: 3px solid black;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:25%;
+    height: 33%;
+}
+
+.quadrado-cinza button{
+    margin-top: 20px;
+
+}

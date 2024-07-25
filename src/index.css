@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#botaoCadastrar{
+
+    letter-spacing: 5px;
+    text-align: center;
+    font-weight: bold;
+    border: solid 1px grey;
+    border-radius: 20px;
+    height: auto;
+    width: 145px;
+    color: white;
+    background-color:darkslateblue;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+}
+
+#botaoSumir{
+
+  letter-spacing: 5px;
+  text-align: center;
+  font-weight: bold;
+  border: solid 1px grey;
+  border-radius: 20px;
+  height: auto;
+  width: 145px;
+  color: white;
+  background-color:darkslateblue;
+  transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+}
+
+#email{
+ 
+}
+
+h1 {
+
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 21px;
+  font-weight: bold;
+  color:indigo;
+}
+
+#digiteEmail {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+  font-weight: normal;
+  color: black;
+}

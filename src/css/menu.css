@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.comp-menu-superior {
+  display: flex;
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  align-items: center;
+  /* Centraliza verticalmente */
+  height: 85px;
+}
+
+.comp-menu-superior span {
+  margin: 0 2px;
+  /* Adiciona margem entre os links */
+}
+
+
+.faixa-superior {
+  background-color: black;
+  height: 55px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 78%;
+}
+
+
+.faixa-marcas {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  background-color: rgb(255, 255, 255);
+  height: 80px;
+  width: 100%;
+  gap: 2%;
+}
+
+.faixa-marcas img {
+  width: 36px;
+  height: 23px;
+}
+
+.comp-alta {
+  height: 750px;
+  background-color: rgb(217, 217, 217);
+}
+
+.foot {
+  background-color: black;
+  height: 200px;
+}
+
+.comp-alta-sign {
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+}
+
+.comp-alta-prod {
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+}
+
+.linha-superior,
+.linha-inferior {
+  display: flex;
+  justify-content: left;
+  /* Centraliza as fotos horizontalmente */
+  margin-left: 5%;
+  /* Espaço entre as linhas de fotos */
+  margin-top: 6%
+}
+
+.foto-esq,
+.foto-dir {
+  margin-right: 5%;
+  /* Margem entre as fotos */
+  width: 420px;
+  /* Largura da moldura */
+  height: 220px;
+  /* Altura da moldura */
+  border: 2px solid rgb(229, 229, 229);
+  /* Estilo da moldura */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quadrado-direita {
+  transform: translateY(-50%);
+  /* Centraliza verticalmente */
+  width: 650px;
+  height: 600px;
+  background-color: rgb(229, 229, 229);
+  /* Cor de fundo do quadrado */
+  border: 2px solid rgb(229, 229, 229);
+  /* Borda do quadrado */
+  margin-left: 10%;
+}
+
+.quadrado-direita {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tamanhos {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.quadradinho {
+  margin-right: 5px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  z-index: 999;
+  margin-left: 2rem;
+}
+
+input {
+  padding: 12px 20px;
+  border: none;
+  background: #f7f6f6;
+  outline: none;
+  margin-right: 20px;
+  border-radius: 5px;
+  position: relative;
+  width: 14rem;
+}
+
+.nav-icons {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 2rem;
+}
+
+.usuario {
+  width: 150px;
+}
+
+.selecionado {
+  background-color: black;
+  color: white;
+}
+
+.botao-selecionado {
+  background-color: black;
+  color: white;
+}
+
+.user-div {
+  margin-left: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 5px
+}

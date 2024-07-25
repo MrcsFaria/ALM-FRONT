@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+*{
+    font-family: 'Inter', sans-serif;
+}
+
+.card-containerr {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: 20rem;
+  margin-top: 2rem;
+  z-index: -2;
+}
+
+.botao-limpar {
+  padding: 10px 20px;
+  margin-right: 6px;
+  background: transparent;
+  border: none;
+  border: 0.6px solid #ccc;
+  border-radius: 5px;
+  color: #323232;
+  cursor: pointer;
+}
+
+.div-prod {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cardd {
+  margin: 20px;
+  border: 2px solid #ededed;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.cardd-img {
+  width: 13rem;
+  margin-bottom: 1rem;
+}
+
+.cardd-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  word-wrap: break-word; /* Quebra de linha para o texto */
+}
+
+.cardd-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bag-icon {
+  color: #535353;
+}

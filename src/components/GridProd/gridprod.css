@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+*{
+    font-family: 'Inter', sans-serif;
+}
+
+.corpo-grid-prod{
+    padding-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 18%;
+    width: 100%;
+    height: 100%;
+}
+
+.img-grid-prod{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 3vw;
+}
+
+.linha-superior-grid{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 3vw;
+}
+
+.linha-inferior-grid{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 3vw;
+}
+
+.linha-superior-grid-div-img-1, .linha-superior-grid-div-img-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 40%;
+    height: 40%;
+}
+
+.linha-inferior-grid-div-img-1, .linha-inferior-grid-div-img-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 40%;
+    height: 40%;
+}
+
+.linha-superior-grid-div-img-1 img,
+.linha-superior-grid-div-img-2 img,
+.linha-inferior-grid-div-img-1 img,
+.linha-inferior-grid-div-img-2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Faz com que a imagem se ajuste dentro da div */
+}
+
+.info-grid-prod{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+
+.quadrado-info-prod{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    background-color: #E5E5E5;
+    height: 50vh;
+    width: 28vw;
+    border-radius: 35px;
+}
+
+
+
