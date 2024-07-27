@@ -8,6 +8,8 @@ const FrameRecover: React.FC = () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
+
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -16,7 +18,7 @@ const FrameRecover: React.FC = () => {
             if (response.data) {
                 const sendEmailResponse = await axios.post('https://alm-api-zeta.vercel.app/send', { email });
                 if (sendEmailResponse.status === 200) {
-                    setMessage('E-mail de recuperação enviado com sucesso!');
+                    navigate('/Confirm');
                 } else {
                     setError('E-mail não encontrado no banco de dados.');
                 }
