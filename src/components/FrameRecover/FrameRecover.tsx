@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../FrameRecover/frameRecover.css';
 
 const FrameRecover: React.FC = () => {
@@ -10,7 +10,6 @@ const FrameRecover: React.FC = () => {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -18,7 +17,9 @@ const FrameRecover: React.FC = () => {
             if (response.data) {
                 const sendEmailResponse = await axios.post('https://alm-api-zeta.vercel.app/send', { email });
                 if (sendEmailResponse.status === 200) {
-                    navigate('/Confirm');
+                    // Armazena o e-mail no localStorage
+                    localStorage.setItem('resetEmail', email);
+                    navigate('/Confirm'); // Navega para a página de confirmação
                 } else {
                     setError('E-mail não encontrado no banco de dados.');
                 }

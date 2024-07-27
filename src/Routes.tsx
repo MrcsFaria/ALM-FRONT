@@ -9,6 +9,7 @@ import Products from "./pages/Products";
 import Pagamento from "./pages/Pagamento";
 import Mail from "./pages/ForgotPassword/ReceiveMail"
 import Code from "./pages/ForgotPassword/InsertCode"
+import Pass from "./pages/NewPass/NewPass"
 import { CartProvider } from '../src/components/CartContext/CartContext'; // Importe o provedor do contexto
 
 const AppRoutes: React.FC = () => {
@@ -24,6 +25,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/Pagamento" element={<Pagamento />} />
         <Route path="/Recover" element={<Mail />} />
         <Route path="/Confirm" element={<Code />} />
+        <Route path="/NewPass" element={<Pass />} />
       </Routes>
     </CartProvider>
   );

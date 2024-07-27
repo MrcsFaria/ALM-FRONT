@@ -1,25 +1,64 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, useNavigate } from 'react-router-dom';
 import '../FrameCode/frameCode.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const FrameCode: React.FC = () => {
+    const [code, setCode] = useState('');
+    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
+
+    // Recupera o e-mail do localStorage
+    const email = localStorage.getItem('resetEmail');
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!email) {
+            setError('E-mail não encontrado.');
+            return;
+        }
+        try {
+            // Verifica o código inserido pelo usuário
+            const response = await axios.get(`https://alm-api-zeta.vercel.app/code/${email}`);
+            const storedCode = response.data?.code;
+
+            if (storedCode === code) {
+                navigate('/NewPass');
+            } else {
+                setError('Código inválido.');
+            }
+        } catch (err) {
+            setError('Erro ao verificar o código.');
+        }
+    };
+
     return (
         <div className='div-code'>
             <div className="componente">
                 <p className="titulo">Recuperação</p>
-                <form className="formulario-code">
+                <form className="formulario-code" onSubmit={handleSubmit}>
                     <div className="campos-code">
-                        <label htmlFor="email">
-                            Enviamos um código de recuperação para o e-mail informado<br />Insira o código abaixo
+                        <label htmlFor="code">
+                            Insira o código que você recebeu por e-mail
                         </label>
-                        <input type="email" id="email" />
+                        <input
+                            type="text"
+                            id="code"
+                            placeholder="Código"
+                            value={code}
+                            onChange={(e) => setCode(e.target.value)}
+                            required
+                        />
                     </div>
                     <button type="submit" className='botao-form-code'>
-                        Recuperar Senha
+                        Verificar Código
                     </button>
                 </form>
+                {error && <p className="text-danger">{error}</p>}
+                {message && <p className="message">{message}</p>}
             </div>
             <div className="copyright">
                 <p>
@@ -29,8 +68,5 @@ const FrameCode: React.FC = () => {
         </div>
     );
 };
-
-
-
 
 export default FrameCode;
