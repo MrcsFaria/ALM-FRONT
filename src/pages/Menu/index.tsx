@@ -23,7 +23,6 @@ const MenuContent: React.FC = () => {
     <div>
       <FaixaSuperiorProducts cartItems={cartItems} />
       <MenuSuperior />
-      <Faixa />
       <MeuCarousel />
       <FaixaMarcas />
       <FrameTrending />
