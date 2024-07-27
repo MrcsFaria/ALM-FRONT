@@ -18,7 +18,7 @@ const FrameRecover: React.FC = () => {
                 if (sendEmailResponse.status === 200) {
                     setMessage('E-mail de recuperação enviado com sucesso!');
                 } else {
-                    setError('Erro ao enviar o e-mail de recuperação.');
+                    setError('E-mail não encontrado no banco de dados.');
                 }
             } else {
                 setError('E-mail não encontrado no banco de dados.');
@@ -46,7 +46,7 @@ const FrameRecover: React.FC = () => {
                         Recuperar Senha
                     </button>
                 </form>
-                {error && <p className="error">{error}</p>}
+                {error && <p className="text-danger">{error}</p>}
                 {message && <p className="message">{message}</p>}
             </div>
             <div className="copyright">
