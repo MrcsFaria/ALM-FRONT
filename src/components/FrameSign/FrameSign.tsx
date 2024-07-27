@@ -65,7 +65,9 @@ function FrameSg({ children }: FrameProps) {
           </button>
         </form>
         <div className='opcoes'>
+        <Link to={`/Recover`}>
         <p>Esqueceu a senha?</p>
+        </Link>
         <p>Ou</p>
         <p>Não tem uma conta? <Link to={`/SignUp`}>Cadastre-se</Link></p>
         </div>
