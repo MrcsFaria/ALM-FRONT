@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+*{
+    font-family: 'Inter', sans-serif;
+}
+
+.div-code {
+    padding-top: 9vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    color: rgb(255, 255, 255);
+    gap: 20vh;
+}
+
+.campos-code{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 1.5vh;
+    text-align: center;
+}
+
+.formulario-code{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 1.5vh;
+    text-align: center;
+}
+
+.botao-form-code{
+    font-size: 14px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    height: 3vh;
+    border-radius: 10px;
+    width: 80%;
+    margin-top: 8%;
+}
