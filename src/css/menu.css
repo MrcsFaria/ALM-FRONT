@@ -60,12 +60,12 @@
 }
 
 .comp-alta {
-  height: 750px;
   background-color: rgb(217, 217, 217);
 }
 
 .foot {
   background-color: black;
+  height: 15vh;
 }
 
 .comp-alta-sign {

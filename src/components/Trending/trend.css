@@ -10,10 +10,20 @@
     align-items: center;
     justify-content: center;
     justify-items: center;
-    padding-top: 2%;
+    padding-top: 1%;
     width: 100%;
 }
 
 .grid-trend{
     width: 98%;
 }
+
+.image-frame-card {
+    height: 100%;
+}
+
+.image-frame img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }

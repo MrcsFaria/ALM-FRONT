@@ -48,14 +48,13 @@ function Alta() {
         <Row className="row-cols-1 row-cols-md-6 g-10">
           {products.map((product, index) => (
             <Col key={product.id} className="mb-4">
-              <Card className="image-frame text-left">
+              <Card className="image-frame-card text-left">
                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <div className="image-frame">
                     <img
                       src={getImagesArray(product.imagem)[0]} // Mostra apenas a primeira imagem
                       alt={`Imagem ${index + 1}`}
                       className="img-fluid"
-                      style={{ width: '300px', height: '230px' }}
                     />
                   </div>
                   <Card.Body>
