@@ -36,8 +36,9 @@ const FrameProd: React.FC<FrameProps> = ({ addToCart }) => {
 
   const handleAddToCart = () => {
     if (selectedSize && product) {
-      const productWithSize: ProductWithQuantity = {
+      const productWithSize: ProductWithQuantity = {  
         ...product,
+        id: Date.now(),
         tamanhos: selectedSize,
         quantidade: 1 // Adiciona o produto com quantidade inicial 1
       };
@@ -55,7 +56,7 @@ const FrameProd: React.FC<FrameProps> = ({ addToCart }) => {
 
         // Verifica se o produto com o mesmo ID e tamanho já existe
         const existingProductIndex = products.findIndex(
-          (item) => item.id === productWithSize.id && item.tamanhos === productWithSize.tamanhos
+          (item) => item.nome === productWithSize.nome && item.tamanhos === productWithSize.tamanhos
         );
 
         if (existingProductIndex !== -1) {
@@ -80,9 +81,8 @@ const FrameProd: React.FC<FrameProps> = ({ addToCart }) => {
   }
 
   console.log(imagensProduto[0])
-  
+
   return (
-    
     <div className="corpo-grid-prod">
       <div className="img-grid-prod">
         <div className="linha-superior-grid">

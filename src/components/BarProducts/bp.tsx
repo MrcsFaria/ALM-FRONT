@@ -26,24 +26,30 @@ const FaixaSuperiorProducts: React.FC<FaixaSuperiorProductsProps> = ({ cartItems
     setShowCartDetails(!showCartDetails);
   };
 
-  useEffect(() => {
-    const storedProducts = localStorage.getItem("Produtos");
-    if (storedProducts) {
-      try {
-        const productArray: ProductWithQuantity[] = JSON.parse(storedProducts);
-        setCartItems(productArray);
-      } catch (error) {
-        console.error('Erro ao processar os produtos do localStorage:', error);
-      }
-    }
-  }, []);
 
   useEffect(() => {
     const storedProducts = localStorage.getItem("Produtos");
     if (storedProducts) {
       try {
         const productArray: ProductWithQuantity[] = JSON.parse(storedProducts);
-        setCartItems(productArray);
+  
+        // Consolidar itens com o mesmo nome e tamanho
+        const consolidatedProducts: ProductWithQuantity[] = productArray.reduce((accumulator: ProductWithQuantity[], item: ProductWithQuantity) => {
+          const existingItem = accumulator.find(p => p.nome === item.nome && p.tamanhos === item.tamanhos);
+  
+          if (existingItem) {
+            // Atualiza a quantidade se o item já existir
+            existingItem.quantidade += item.quantidade;
+          } else {
+            // Adiciona novo item à lista
+            accumulator.push(item);
+          }
+  
+          return accumulator;
+        }, []);
+  
+        // Atualiza o estado com a lista consolidada
+        setCartItems(consolidatedProducts);
       } catch (error) {
         console.error('Erro ao processar os produtos do localStorage:', error);
       }
@@ -53,7 +59,7 @@ const FaixaSuperiorProducts: React.FC<FaixaSuperiorProductsProps> = ({ cartItems
   useEffect(() => {
     const storedUserName = localStorage.getItem('userName');
     setUserName(storedUserName);
-  }, []);
+  }, [userName]);
 
   const handleIncreaseQuantity = (productId: number, productSize: string) => {
     const updatedItems = cartItemss.map(item => {
@@ -115,9 +121,9 @@ const FaixaSuperiorProducts: React.FC<FaixaSuperiorProductsProps> = ({ cartItems
       <nav>
         <a onClick={toggleCartDetails}>
           <div className="cart-icon-container relative">
-            <AiOutlineShoppingCart className="nav-icons" style={{ color: 'white', cursor:'pointer' }} />
+            <AiOutlineShoppingCart className="nav-icons" style={{ color: 'white', cursor: 'pointer' }} />
             {cartItemss.length > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-sm rounded-full flex justify-center items-center w-5 h-5" style={{ cursor:'pointer'}}>
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-sm rounded-full flex justify-center items-center w-5 h-5" style={{ cursor: 'pointer' }}>
                 {cartItemss.length}
               </span>
             )}
@@ -130,12 +136,12 @@ const FaixaSuperiorProducts: React.FC<FaixaSuperiorProductsProps> = ({ cartItems
               {userName}
             </span>
             <div>
-              <CiLogout style={{ color: 'white', height: '25px', width: '25px', cursor:'pointer'}} onClick={handleLogout} />
+              <CiLogout style={{ color: 'white', height: '25px', width: '25px', cursor: 'pointer' }} onClick={handleLogout} />
             </div>
           </div>
         ) : (
           <Link to={`/SignUp`} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <AiOutlineUserAdd className="nav-icons" style={{ color: 'white', cursor:'pointer'}} />
+            <AiOutlineUserAdd className="nav-icons" style={{ color: 'white', cursor: 'pointer' }} />
           </Link>
         )}
       </nav>
@@ -150,7 +156,7 @@ const FaixaSuperiorProducts: React.FC<FaixaSuperiorProductsProps> = ({ cartItems
                   {item.imagem && (
                     <img src={getImageUrl(item.imagem.split(',')[0])} alt={item.nome} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
                   )}
-                  <span style={{ marginRight: '10px' }}>{item.nome}</span> - Tamanho: {item.tamanhos} - R$ {(item.preco * item.quantidade).toFixed(2)}
+                  <span style={{ marginRight: '10px' }}>{item.nome}</span> - Tamanho: {item.tamanhos} - QTD: {item.quantidade} - R$ {(item.preco * item.quantidade).toFixed(2)}
                 </li>
               ))}
             </ul>

@@ -25,19 +25,35 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
         setShowCartDetails(!showCartDetails);
     };
 
+
     useEffect(() => {
-        // Carregar produtos do localStorage ao montar o componente
         const storedProducts = localStorage.getItem("Produtos");
         if (storedProducts) {
-            try {
-                const productArray: ProductWithQuantity[] = JSON.parse(storedProducts).map((item: Product) => ({ ...item, quantidade: 1 }));
-                setCartItems(productArray);
-            } catch (error) {
-                console.error('Erro ao processar os produtos do localStorage:', error);
-            }
+          try {
+            const productArray: ProductWithQuantity[] = JSON.parse(storedProducts);
+      
+            // Consolidar itens com o mesmo nome e tamanho
+            const consolidatedProducts: ProductWithQuantity[] = productArray.reduce((accumulator: ProductWithQuantity[], item: ProductWithQuantity) => {
+              const existingItem = accumulator.find(p => p.nome === item.nome && p.tamanhos === item.tamanhos);
+      
+              if (existingItem) {
+                // Atualiza a quantidade se o item já existir
+                existingItem.quantidade += item.quantidade;
+              } else {
+                // Adiciona novo item à lista
+                accumulator.push(item);
+              }
+      
+              return accumulator;
+            }, []);
+      
+            // Atualiza o estado com a lista consolidada
+            setCartItems(consolidatedProducts);
+          } catch (error) {
+            console.error('Erro ao processar os produtos do localStorage:', error);
+          }
         }
-    }, []);
-
+      }, []);
 
     const handleIncreaseQuantity = (productId: number) => {
         const updatedItems = cartItemss.map(item => {
