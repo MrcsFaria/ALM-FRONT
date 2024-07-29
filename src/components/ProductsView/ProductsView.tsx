@@ -25,6 +25,7 @@ const ProductView: React.FC<ProductViewProps> = ({ priceFilter, brandFilter, cat
   const [allProducts, setAllProducts] = useState<Product[]>([]); // Armazena todos os produtos
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]); // Armazena os produtos filtrados
   const [cartItems, setCartItems] = useState<Product[]>([]); // Estado para armazenar os itens no carrinho
+  const [searchTerm, setSearchTerm] = useState(''); // Estado para armazenar o termo de pesquisa
   const location = useLocation(); // Obtém a localização da URL
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const ProductView: React.FC<ProductViewProps> = ({ priceFilter, brandFilter, cat
 
   useEffect(() => {
     applyFilters();
-  }, [priceFilter, brandFilter, categoryFilter, allProducts]); // Include allProducts in dependencies to reapply filters when allProducts change
+  }, [priceFilter, brandFilter, categoryFilter, allProducts, searchTerm]); // Include allProducts in dependencies to reapply filters when allProducts change
 
   // Função para buscar todos os produtos
   const fetchProducts = () => {
@@ -80,7 +81,10 @@ const ProductView: React.FC<ProductViewProps> = ({ priceFilter, brandFilter, cat
 
       const categoryMatches = categoryFilter !== null ? product.categoryId === categoryFilter : true;
 
-      return priceMatches && brandMatches && categoryMatches;
+      const searchMatches = product.nome.toLowerCase().includes(searchTerm.toLowerCase());
+
+
+      return priceMatches && brandMatches && categoryMatches  && searchMatches;
     });
 
     setFilteredProducts(filtered);
@@ -113,6 +117,13 @@ const ProductView: React.FC<ProductViewProps> = ({ priceFilter, brandFilter, cat
   return (
     <div className="card-containerr">
       <div>
+        <input
+          type="text"
+          placeholder="Pesquisar tênis"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className='input-pesquisa'
+        />
         <button onClick={clearFilters} className='botao-limpar'>
           Limpar Filtros
         </button>
