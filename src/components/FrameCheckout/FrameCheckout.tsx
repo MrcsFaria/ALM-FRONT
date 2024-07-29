@@ -129,7 +129,7 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
                                 {item.imagem && (
                                     <img src={getImageUrl(item.imagem.split(',')[0])} alt={item.nome} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
                                 )}
-                                <span style={{ marginRight: '10px', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>{item.nome + ' ' + item.tamanhos}</span><span style={{fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>- R$ {(item.preco * item.quantidade).toFixed(2)}</span> 
+                                <span style={{ marginRight: '10px', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>{item.nome + ' - Tam ' + item.tamanhos}</span><span style={{fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>- R$ {(item.preco * item.quantidade).toFixed(2)}</span> 
                                 <button onClick={() => handleDecreaseQuantity(item.id)} className='btn btn-dark ml-5'>-</button>
                                 <span className='ml-2' >{item.quantidade}</span>
                                 <button onClick={() => handleIncreaseQuantity(item.id)} className='btn btn-dark ml-2'>+</button>
