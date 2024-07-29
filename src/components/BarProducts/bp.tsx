@@ -61,31 +61,32 @@ const FaixaSuperiorProducts: React.FC<FaixaSuperiorProductsProps> = ({ cartItems
     setUserName(storedUserName);
   }, [userName]);
 
-  const handleIncreaseQuantity = (productId: number, productSize: string) => {
+  const handleIncreaseQuantity = (productId: number) => {
     const updatedItems = cartItemss.map(item => {
-      if (item.id === productId && item.tamanhos === productSize) {
-        return { ...item, quantidade: item.quantidade + 1 };
-      }
-      return item;
+        if (item.id === productId) {
+            return { ...item, quantidade: item.quantidade + 1 };
+        }
+        return item;
     });
     setCartItems(updatedItems);
     localStorage.setItem('Produtos', JSON.stringify(updatedItems));
-  };
+};
 
-  const handleDecreaseQuantity = (productId: number, productSize: string) => {
-    const updatedItems = cartItemss.reduce((result, item) => {
-      if (item.id === productId && item.tamanhos === productSize) {
-        if (item.quantidade > 1) {
-          result.push({ ...item, quantidade: item.quantidade - 1 });
+const handleDecreaseQuantity = (productId: number) => {
+    const updatedItems = cartItemss.map(item => {
+        if (item.id === productId) {
+            if (item.quantidade > 1) {
+                return { ...item, quantidade: item.quantidade - 1 };
+            } else {
+                return null; // Retorna null para marcar o item que será removido
+            }
         }
-      } else {
-        result.push(item);
-      }
-      return result;
-    }, [] as ProductWithQuantity[]);
+        return item;
+    }).filter((item): item is ProductWithQuantity => item !== null); // Filtra para remover os itens marcados como null
+
     setCartItems(updatedItems);
     localStorage.setItem('Produtos', JSON.stringify(updatedItems));
-  };
+};
 
   const handleLogout = () => {
     // Remove userName do localStorage
@@ -159,6 +160,9 @@ const FaixaSuperiorProducts: React.FC<FaixaSuperiorProductsProps> = ({ cartItems
                       <img src={getImageUrl(item.imagem.split(',')[0])} alt={item.nome} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
                     )}
                     <span style={{ marginRight: '10px' }}>{item.nome}</span> - Tamanho: {item.tamanhos} - QTD: {item.quantidade} - R$ {(item.preco * item.quantidade).toFixed(2)}
+                    <button onClick={() => handleDecreaseQuantity(item.id)} className='btn btn-secondary ml-5'>-</button>
+                    <span className='ml-2' >{item.quantidade}</span>
+                    <button onClick={() => handleIncreaseQuantity(item.id)} className='btn btn-secondary ml-2'>+</button>
                   </li>
                 ))}
               </ul>
