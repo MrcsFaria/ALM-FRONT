@@ -3,6 +3,7 @@ import { Product } from '../ProductsView/ProductsView';
 import imagem1 from '../../img/safety.png';
 import '../../components/FrameCheckout/checkout.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 // Atualização do tipo Product para incluir a quantidade
@@ -20,40 +21,50 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
     const [numero, setNumero] = useState('');
+    const navigate = useNavigate();
 
     const toggleCartDetails = () => {
         setShowCartDetails(!showCartDetails);
     };
 
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+        if (!cep || !rua || !cidade || !estado || !numero) {
+            alert("Por favor, preencha todos os campos antes de Finalizar a Compra.");
+            return;
+        } else {
+            navigate('/Pagamento');
+        }
+    }
 
     useEffect(() => {
         const storedProducts = localStorage.getItem("Produtos");
         if (storedProducts) {
-          try {
-            const productArray: ProductWithQuantity[] = JSON.parse(storedProducts);
-      
-            // Consolidar itens com o mesmo nome e tamanho
-            const consolidatedProducts: ProductWithQuantity[] = productArray.reduce((accumulator: ProductWithQuantity[], item: ProductWithQuantity) => {
-              const existingItem = accumulator.find(p => p.nome === item.nome && p.tamanhos === item.tamanhos);
-      
-              if (existingItem) {
-                // Atualiza a quantidade se o item já existir
-                existingItem.quantidade += item.quantidade;
-              } else {
-                // Adiciona novo item à lista
-                accumulator.push(item);
-              }
-      
-              return accumulator;
-            }, []);
-      
-            // Atualiza o estado com a lista consolidada
-            setCartItems(consolidatedProducts);
-          } catch (error) {
-            console.error('Erro ao processar os produtos do localStorage:', error);
-          }
+            try {
+                const productArray: ProductWithQuantity[] = JSON.parse(storedProducts);
+
+                // Consolidar itens com o mesmo nome e tamanho
+                const consolidatedProducts: ProductWithQuantity[] = productArray.reduce((accumulator: ProductWithQuantity[], item: ProductWithQuantity) => {
+                    const existingItem = accumulator.find(p => p.nome === item.nome && p.tamanhos === item.tamanhos);
+
+                    if (existingItem) {
+                        // Atualiza a quantidade se o item já existir
+                        existingItem.quantidade += item.quantidade;
+                    } else {
+                        // Adiciona novo item à lista
+                        accumulator.push(item);
+                    }
+
+                    return accumulator;
+                }, []);
+
+                // Atualiza o estado com a lista consolidada
+                setCartItems(consolidatedProducts);
+            } catch (error) {
+                console.error('Erro ao processar os produtos do localStorage:', error);
+            }
         }
-      }, []);
+    }, []);
 
     const handleIncreaseQuantity = (productId: number) => {
         const updatedItems = cartItemss.map(item => {
@@ -116,7 +127,7 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
     const getImageUrl = (imagePath: string): string => {
         // Retorna o caminho da imagem ajustado
         return `/img/tenis/${imagePath.trim()}`;
-      };
+    };
 
     return (
         <div className='body'>
@@ -129,7 +140,7 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
                                 {item.imagem && (
                                     <img src={getImageUrl(item.imagem.split(',')[0])} alt={item.nome} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
                                 )}
-                                <span style={{ marginRight: '10px', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>{item.nome + ' - Tam ' + item.tamanhos}</span><span style={{fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>- R$ {(item.preco * item.quantidade).toFixed(2)}</span> 
+                                <span style={{ marginRight: '10px', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>{item.nome + ' - Tam ' + item.tamanhos}</span><span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>- R$ {(item.preco * item.quantidade).toFixed(2)}</span>
                                 <button onClick={() => handleDecreaseQuantity(item.id)} className='btn btn-dark ml-5'>-</button>
                                 <span className='ml-2' >{item.quantidade}</span>
                                 <button onClick={() => handleIncreaseQuantity(item.id)} className='btn btn-dark ml-2'>+</button>
@@ -140,7 +151,7 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
                 <div style={{ borderTop: '3px solid black' }}>
                     <form>
                         <div className="form-group">
-                            <label htmlFor="cep" style={{ fontFamily: 'Inter, sans-serif', fontSize:'18px', fontWeight: 500 }}>CEP:</label>
+                            <label htmlFor="cep" style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', fontWeight: 500 }}>CEP (Somente Números):</label>
                             <input
                                 type="text"
                                 id="cep"
@@ -154,7 +165,7 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="rua" style={{ fontFamily: 'Inter, sans-serif', fontSize:'18px', fontWeight: 500 }}>Rua:</label>
+                            <label htmlFor="rua" style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', fontWeight: 500 }}>Rua:</label>
                             <input
                                 type="text"
                                 id="rua"
@@ -166,7 +177,7 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="numero" style={{ fontFamily: 'Inter, sans-serif', fontSize:'18px', fontWeight: 500 }}>Número:</label>
+                            <label htmlFor="numero" style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', fontWeight: 500 }}>Número:</label>
                             <input
                                 type="text"
                                 id="numero"
@@ -178,7 +189,7 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="cidade" style={{ fontFamily: 'Inter, sans-serif', fontSize:'18px', fontWeight: 500 }}>Cidade:</label>
+                            <label htmlFor="cidade" style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', fontWeight: 500 }}>Cidade:</label>
                             <input
                                 type="text"
                                 id="cidade"
@@ -190,7 +201,7 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="estado" style={{ fontFamily: 'Inter, sans-serif',  fontSize:'18px',fontWeight: 500 }}>Estado:</label>
+                            <label htmlFor="estado" style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', fontWeight: 500 }}>Estado:</label>
                             <input
                                 type="text"
                                 id="estado"
@@ -218,7 +229,7 @@ const FrameCheckout: React.FC<FaixaSuperiorProductsProps> = ({ cartItems }) => {
                         <a style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>Total</a>
                         <a style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>R$ {parseInt(calcularTotal()) + 20}</a>
                     </div>
-                    <Link to={'/Pagamento'}><button className="btn btn-dark" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>Finalizar</button></Link>
+                    <button className="btn btn-dark" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }} onClick={handleSubmit}>Finalizar</button>
                 </div>
                 <div className='selo-seg'>
                     <img
