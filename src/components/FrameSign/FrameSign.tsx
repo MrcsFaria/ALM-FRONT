@@ -13,6 +13,7 @@ function FrameSg({ children }: FrameProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleLoginFailure = (response: any) => {
@@ -57,7 +58,18 @@ function FrameSg({ children }: FrameProps) {
             <label htmlFor="password">
               Senha
             </label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input id="password" type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <div className="campo-show-senha">
+              <label htmlFor="showPassword">
+                Mostrar senha
+              </label>
+              <input
+                type="checkbox"
+                id="showPassword"
+                checked={showPassword}
+                onChange={(e) => setShowPassword(e.target.checked)}
+              />
           </div>
           {errorMessage && <p className="text-danger">{errorMessage}</p>}
           <button type="submit" onClick={handleLogin} className='botao-form'>
@@ -65,17 +77,17 @@ function FrameSg({ children }: FrameProps) {
           </button>
         </form>
         <div className='opcoes'>
-        <Link to={`/Recover`}>
-        <p>Esqueceu a senha?</p>
-        </Link>
-        <p>Ou</p>
-        <p>Não tem uma conta? <Link to={`/SignUp`}>Cadastre-se</Link></p>
+          <Link to={`/Recover`}>
+            <p>Esqueceu a senha?</p>
+          </Link>
+          <p>Ou</p>
+          <p>Não tem uma conta? <Link to={`/SignUp`}>Cadastre-se</Link></p>
         </div>
       </div>
       <div className="copyright">
-      <p>
-        Copyright © 2000 - 2024 www.ALM.com.br, TODOS OS DIREITOS RESERVADOS.
-      </p>
+        <p>
+          Copyright © 2000 - 2024 www.ALM.com.br, TODOS OS DIREITOS RESERVADOS.
+        </p>
       </div>
 
     </div>

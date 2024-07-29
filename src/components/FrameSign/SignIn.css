@@ -34,12 +34,21 @@
     align-items: center;
     justify-content: center;
     justify-items: center;
-    gap: 1.5vh;
+    gap: 0.5vh;
 }
 
 .campos{
     display: flex;
     flex-direction: column;
+}
+
+.campo-show-senha {
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 60%;
+
 }
 
 .campos input{
