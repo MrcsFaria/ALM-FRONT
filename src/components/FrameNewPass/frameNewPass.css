@@ -14,3 +14,11 @@
     color: rgb(255, 255, 255);
     gap: 20vh;
 }
+
+#newPassword {
+    height: 30px;
+}
+
+#confirmPassword {
+    height: 30px;
+}

@@ -25,6 +25,10 @@
     text-align: center;
 }
 
+.campos-code input{
+    height: 30px;
+}
+
 .formulario-code{
     display: flex;
     flex-direction: column;
