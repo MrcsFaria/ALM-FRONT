@@ -91,7 +91,7 @@
 @media (max-width: 900px) {
 
     .componente{
-        height: 50vh;
+        height: 500px;
         width: 50vh;
     }
 
@@ -119,7 +119,7 @@
 @media (max-width: 700px) {
 
     .componente{
-        height: 52vh;
+        height: 480px;
         width: 42vh;
     }
 
@@ -131,7 +131,7 @@
 @media (max-width: 560px) {
 
     .componente{
-        height: 45vh;
+        height: 450px;
         width: 32vh;
     }
 
@@ -151,11 +151,11 @@
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
 
     .componente{
-        height: 42vh;
-        width: 28vh;
+        height: 420px;
+        width: 280px;
     }
 
     .componente p{
