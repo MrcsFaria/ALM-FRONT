@@ -90,6 +90,103 @@
 
 @media (max-width: 900px) {
 
+    .componente{
+        height: 50vh;
+        width: 50vh;
+    }
+
+    .componente p{
+        font-size: 20px;
+    }
+
+    .opcoes p{
+        font-size: 14px;
+    }
+
+    .campos label{
+        font-size: 14px;
+    }
+
+    .campo-show-senha label{
+        font-size: 14px;
+    }
+
+    .copyright{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .componente{
+        height: 52vh;
+        width: 42vh;
+    }
+
+    .copyright{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 560px) {
+
+    .componente{
+        height: 45vh;
+        width: 32vh;
+    }
+
+    .botao-form{
+        width: 70%;
+    }
+
+    .copyright{
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 445px) {
+
+    .copyright{
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .componente{
+        height: 42vh;
+        width: 28vh;
+    }
+
+    .componente p{
+        font-size: 17px;
+    }
+
+    .opcoes p{
+        font-size: 12px;
+    }
+
+    .botao-form{
+        width: 60%;
+    }
+
+    .campos label{
+        font-size: 12px;
+    }
+
+    .campo-show-senha label{
+        font-size: 12px;
+    }
 
 
+    .copyright{
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 310px) {
+
+    .copyright{
+        font-size: 7px;
+    }
 }
