@@ -104,17 +104,17 @@ const FrameProd: React.FC<FrameProps> = ({ addToCart }) => {
       </div>
       <div className="info-grid-prod">
         <div className='quadrado-info-prod'>
-          <p style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '1.8vw' }}>{product.nome}</p>
-          <p style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '1.2vw' }}>{product.marca}</p>
-          <p style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '1.4vw', paddingTop: '30px' }}>R$ {product.preco}</p>
-          <p style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '1.6vw', paddingTop: '30px' }}>Tamanhos</p>
+          <p style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600}}>{product.nome}</p>
+          <p style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400}}>{product.marca}</p>
+          <p style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, paddingTop: '30px' }}>R$ {product.preco}</p>
+          <p style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, paddingTop: '30px' }}>Tamanhos</p>
           <ul className="tamanhos list-unstyled d-flex justify-content-center">
             {tamanhosProduto.map((tamanho, index) => (
               <li
                 key={index}
                 className={`quadradinho ${selectedSize === tamanho ? 'selecionado' : ''}`}
                 onClick={() => handleSizeSelect(tamanho)}
-                style={{ fontFamily: 'Inter, sans-serif', fontSize: '1vw' }}
+                style={{ fontFamily: 'Inter, sans-serif'}}
               >
                 {tamanho}
               </li>
