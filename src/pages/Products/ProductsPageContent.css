@@ -1,0 +1,52 @@
+#bd-div{
+    display: flex;
+    flex-direction: row;
+}
+
+/* Overlay para o sidebar */
+.sidebar-overlay {
+    position: fixed;
+    top: 100px; /* Deixa o FaixaSuperiorProducts visível */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Certifique-se de que o overlay apareça acima do conteúdo, mas abaixo do FaixaSuperiorProducts */
+  }
+  
+  /* Container para o Sidebar dentro do overlay */
+  .sidebar-container {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    height: 600px;
+    max-width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1001;
+  }
+  
+  /* Botão de fechar overlay */
+  .close-overlay {
+    margin-top: 510px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .close-overlay:hover {
+    background-color: #ff1a1a;
+  }
+
+  @media (max-width: 826px) {
+    .sidebar-overlay {
+      display: none;
+    }
+  }
+  

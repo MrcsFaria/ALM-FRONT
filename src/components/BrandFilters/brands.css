@@ -31,3 +31,10 @@
     background-color: black;
     color: white;
   }
+
+  @media (max-width: 825px) {
+    .recommended-flex {
+      margin-left: 0px;
+    }
+  }
+  
