@@ -46,7 +46,7 @@
 
   @media (max-width: 826px) {
     .sidebar-overlay {
-      display: none;
+      display: flex;
     }
 
     #btn-brand-f{
