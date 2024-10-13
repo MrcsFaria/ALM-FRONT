@@ -27,7 +27,7 @@ const MeuCarousel: React.FC = () => {
     <Carousel>
       <Carousel.Item onClick={handleCarouselItemClick1}>
         <img
-          className="d-block w-100"
+          className="d-block w-100 h-[260px] max-[800px]:h-[230px] max-[560px]:h-[200px] max-[400px]:h-[180px]"
           src={imagem1}
           alt="First slide"
         />
@@ -38,7 +38,7 @@ const MeuCarousel: React.FC = () => {
       </Carousel.Item>
       <Carousel.Item onClick={handleCarouselItemClick2}>
         <img
-          className="d-block w-100"
+          className="d-block w-100 h-[260px] max-[800px]:h-[230px] max-[560px]:h-[200px] max-[400px]:h-[180px]"
           src={imagem2}
           alt="Second slide"
         />
@@ -49,7 +49,7 @@ const MeuCarousel: React.FC = () => {
       </Carousel.Item>
       <Carousel.Item onClick={handleCarouselItemClick3}>
         <img
-          className="d-block w-100"
+          className="d-block w-100 h-[260px] max-[800px]:h-[230px] max-[560px]:h-[200px] max-[400px]:h-[180px]"
           src={imagem3}
           alt="Third slide"
         />
