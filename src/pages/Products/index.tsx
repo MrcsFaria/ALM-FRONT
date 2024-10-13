@@ -57,7 +57,7 @@ const ProductsPageContent: React.FC = () => {
         <BrandFilters onBrandFilterChange={handleBrandFilterChange} />
         {/* Renderiza o botão de mostrar/esconder filtros apenas em modo mobile */}
         {isMobileView ? (
-          <button onClick={toggleOverlay}>
+          <button id='btn-brand-f' onClick={toggleOverlay}>
             {isOverlayVisible ? 'Esconder Filtros' : 'Mostrar Filtros'}
           </button>
         ) : (
